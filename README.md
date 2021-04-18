@@ -9,7 +9,7 @@ mvn sql:execute@fill-db
 mvn sql:execute@drop-db
 
 mvn test
-mvn package
+mvn spring-boot:run
 ```
 ## DB scheme
 
