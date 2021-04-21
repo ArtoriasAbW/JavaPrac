@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Отделения</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<tr th:each="department : ${departments}">
+    <p>
+        <a th:href="@{'/departments/' + ${department.getDepartmentId()}}">
+            <td th:text="${department.getDepartmentName()}"></td>
+        </a>
+    </p>
+</tr>
+</body>
+</html>

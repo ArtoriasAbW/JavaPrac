@@ -1,12 +1,9 @@
 package DAO;
 
-import model.Account;
-import model.Client;
 import model.Department;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
+
 
 public interface DepartmentDAO {
     void addDepartment(Department department);

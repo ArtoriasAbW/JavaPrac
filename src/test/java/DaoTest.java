@@ -3,7 +3,6 @@ import model.*;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
-import javax.swing.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
