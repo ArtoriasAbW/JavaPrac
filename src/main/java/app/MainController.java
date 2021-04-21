@@ -8,6 +8,7 @@ import DAO.impl.*;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -33,6 +34,22 @@ public class MainController {
         DepartmentDAOimpl department_dao = new DepartmentDAOimpl();
         model.addAttribute("departments", department_dao.getAllDepartments());
         return "list";
+    }
+
+    @GetMapping("/departments/form")
+    public String add_department() {
+        return "form";
+    }
+
+    @PostMapping("/departments")
+    public String addDepartment(@RequestParam Map<String, String> body, Model model) {
+        System.out.println(body);
+        String name = body.get("departmentName");
+        String address = body.get("departmentAddress");
+        String phoneNumber = body.get("departmentPhoneNumber");
+        Department department = new Department(name, address, phoneNumber);
+        new DepartmentDAOimpl().addDepartment(department);
+        return "redirect:/departments";
     }
 
     @GetMapping("/clients")

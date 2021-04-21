@@ -6,11 +6,12 @@
 </head>
 <body>
 <tr th:each="department : ${departments}">
-    <p>
+    <p align="center">
         <a th:href="@{'/departments/' + ${department.getDepartmentId()}}">
             <td th:text="${department.getDepartmentName()}"></td>
         </a>
     </p>
 </tr>
+<a href='/departments/form'>Добавить</a>
 </body>
 </html>
