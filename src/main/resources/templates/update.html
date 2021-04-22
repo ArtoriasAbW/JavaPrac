@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Информация об отделении</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="'/departments/' + ${departmentId}" method="post">
+    <p><b>Изменение данных отделения</b></p>
+    <p><input type="text" name="departmentName" th:value="${departmentName}">Название отделения<Br>
+        <input type="text" name="departmentAddress" th:value="${departmentAddress}">Адрес отделения<Br>
+        <input type="text" name="departmentPhoneNumber" th:value="${departmentPhoneNumber}">Телефон отделения<Br></p>
+    <p><input type="submit" value="Изменить"></p>
+</form>
+</body>
+</html>

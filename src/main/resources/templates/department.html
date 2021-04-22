@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Department id: ' + ${DepartmentId}"></p>
 <p th:text="'Название отделения: ' + ${DepartmentName}"></p>
 <p th:text="'Адрес отделения: ' + ${DepartmentAddress}"></p>
 <p th:text="'Телефон отделения: ' + ${DepartmentPhoneNumber}"></p>
@@ -13,6 +12,9 @@
 <form action="/departments/delete" method="post">
     <input type="hidden" name="id" th:value="${DepartmentId}">
 <input type="submit" value="Удалить">
+</form>
+<form th:action="'/departments/' + ${DepartmentId} + '/update'" method="get">
+    <input type="submit" value="Редактировать">
 </form>
 </body>
 </html>

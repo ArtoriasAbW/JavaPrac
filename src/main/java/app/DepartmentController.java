@@ -33,7 +33,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/form")
-    public String add_department() {
+    public String addDepartmentForm() {
         return "form";
     }
 
@@ -52,5 +52,25 @@ public class DepartmentController {
         Long id = Long.parseLong(body.get("id"));
         new DepartmentDAOimpl().deleteDepartment(id);
         return "redirect:/departments";
+    }
+
+    @GetMapping("/departments/{departmentId}/update")
+    public String updateDepartmentForm(@PathVariable String departmentId, Model model) {
+        Department department = new DepartmentDAOimpl().getDepartmentById(Long.parseLong(departmentId));
+        model.addAttribute("departmentId", departmentId);
+        model.addAttribute("departmentName", department.getDepartmentName());
+        model.addAttribute("departmentAddress", department.getDepartmentAddress());
+        model.addAttribute("departmentPhoneNumber", department.getDepartmentsPhoneNumber());
+        return "update";
+    }
+
+    @PostMapping("/departments/{departmentId}")
+    public String updateDepartment(@PathVariable String departmentId, @RequestParam Map<String, String> body) {
+        String name = body.get("departmentName");
+        String address = body.get("departmentAddress");
+        String phoneNumber = body.get("departmentPhoneNumber");
+        Department new_department = new Department(name, address, phoneNumber);
+        new DepartmentDAOimpl().updateDepartment(Long.parseLong(departmentId), new_department);
+        return "redirect:/departments/{departmentId}";
     }
 }
