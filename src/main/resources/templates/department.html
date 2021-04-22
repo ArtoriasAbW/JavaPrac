@@ -9,5 +9,10 @@
 <p th:text="'Название отделения: ' + ${DepartmentName}"></p>
 <p th:text="'Адрес отделения: ' + ${DepartmentAddress}"></p>
 <p th:text="'Телефон отделения: ' + ${DepartmentPhoneNumber}"></p>
+<action></action>
+<form action="/departments/delete" method="post">
+    <input type="hidden" name="id" th:value="${DepartmentId}">
+<input type="submit" value="Удалить">
+</form>
 </body>
 </html>

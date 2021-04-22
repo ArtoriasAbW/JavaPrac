@@ -42,8 +42,7 @@ public class MainController {
     }
 
     @PostMapping("/departments")
-    public String addDepartment(@RequestParam Map<String, String> body, Model model) {
-        System.out.println(body);
+    public String addDepartment(@RequestParam Map<String, String> body) {
         String name = body.get("departmentName");
         String address = body.get("departmentAddress");
         String phoneNumber = body.get("departmentPhoneNumber");
@@ -51,6 +50,14 @@ public class MainController {
         new DepartmentDAOimpl().addDepartment(department);
         return "redirect:/departments";
     }
+
+    @PostMapping("/departments/delete")
+    public String deleteDepartment(@RequestParam Map<String, String> body) {
+        Long id = Long.parseLong(body.get("id"));
+        new DepartmentDAOimpl().deleteDepartment(id);
+        return "redirect:/departments";
+    }
+
 
     @GetMapping("/clients")
     @ResponseBody
