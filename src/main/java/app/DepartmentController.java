@@ -29,11 +29,11 @@ public class DepartmentController {
     public String departments(Model model) {
         DepartmentDAOimpl department_dao = new DepartmentDAOimpl();
         model.addAttribute("departments", department_dao.getAllDepartments());
-        return "list";
+        return "department_list";
     }
 
     @GetMapping("/departments/form")
-    public String addDepartmentForm() {
+    public String DepartmentForm() {
         return "form";
     }
 

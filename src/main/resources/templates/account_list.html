@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Отделения</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<a href="/" class="btn">Домашняя страница</a>
+<tr th:each="account : ${accounts}">
+    <p align="center">
+        <a th:href="@{'/accounts/' + ${account.getAccountNumber()}}">
+            <td th:text="${account.getAccountNumber()}"></td>
+        </a>
+    </p>
+</tr>
+<form action="/accounts/form" method="get">
+    <input type="submit" value="Добавить">
+</form>
+</body>
+</html>

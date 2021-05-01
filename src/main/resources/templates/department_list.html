@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<a href="/" class="btn">Домашняя страница</a>
 <tr th:each="department : ${departments}">
     <p align="center">
         <a th:href="@{'/departments/' + ${department.getDepartmentId()}}">
@@ -12,6 +13,8 @@
         </a>
     </p>
 </tr>
-<a href='/departments/form'>Добавить</a>
+<form action="/departments/form" method="get">
+    <input type="submit" value="Добавить">
+</form>
 </body>
 </html>

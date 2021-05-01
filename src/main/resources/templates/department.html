@@ -5,16 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<a href="/departments" class="btn">Список отделений</a>
 <p th:text="'Название отделения: ' + ${DepartmentName}"></p>
 <p th:text="'Адрес отделения: ' + ${DepartmentAddress}"></p>
 <p th:text="'Телефон отделения: ' + ${DepartmentPhoneNumber}"></p>
 <action></action>
+<form th:action="'/departments/' + ${DepartmentId} + '/update'" method="get">
+    <input type="submit" value="Редактировать">
+</form>
 <form action="/departments/delete" method="post">
     <input type="hidden" name="id" th:value="${DepartmentId}">
 <input type="submit" value="Удалить">
-</form>
-<form th:action="'/departments/' + ${DepartmentId} + '/update'" method="get">
-    <input type="submit" value="Редактировать">
 </form>
 </body>
 </html>

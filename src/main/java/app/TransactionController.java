@@ -1,9 +1,6 @@
 package app;
 
-
-import DAO.impl.AccountTypeDAOimpl;
 import DAO.impl.TransactionDAOimpl;
-import model.AccountType;
 import model.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
