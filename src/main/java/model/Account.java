@@ -10,28 +10,28 @@ public class Account {
 
     @Id
     @Column(name = "account_number", length = 12)
-    private String AccountNumber;
+    private String accountNumber;
 
     @Column(name = "account_status")
-    private String AccountStatus;
+    private String accountStatus;
 
     @ManyToOne
     @JoinColumn(name = "client", referencedColumnName = "client_id")
-    private Client Client;
+    private Client client;
 
     @Column(name = "account_balance")
-    private double AccountBalance;
+    private double accountBalance;
 
     @ManyToOne
     @JoinColumn(name = "department", referencedColumnName = "department_id")
-    private Department Department;
+    private Department department;
 
     @ManyToOne
     @JoinColumn(name = "account_type", referencedColumnName = "type_id")
-    private AccountType Type;
+    private AccountType type;
 
     @Column(name = "opening_date")
-    private Date OpeningDate;
+    private Date openingDate;
 
     public Account() {
 
@@ -39,41 +39,41 @@ public class Account {
 
     public Account(String AccountNumber, String AccountStatus, Client Client,
                    double AccountBalance, Department Department, AccountType Type, Date OpeningDate) {
-        this.AccountNumber = AccountNumber;
-        this.AccountStatus = AccountStatus;
-        this.Client = Client;
-        this.AccountBalance = AccountBalance;
-        this.Department = Department;
-        this.Type = Type;
-        this.OpeningDate = OpeningDate;
+        this.accountNumber = AccountNumber;
+        this.accountStatus = AccountStatus;
+        this.client = Client;
+        this.accountBalance = AccountBalance;
+        this.department = Department;
+        this.type = Type;
+        this.openingDate = OpeningDate;
     }
 
     public String getAccountNumber() {
-        return AccountNumber;
+        return accountNumber;
     }
 
     public String getAccountStatus() {
-        return AccountStatus;
+        return accountStatus;
     }
 
     public Client getClient() {
-        return Client;
+        return client;
     }
 
     public double getAccountBalance() {
-        return AccountBalance;
+        return accountBalance;
     }
 
     public Department getDepartment() {
-        return Department;
+        return department;
     }
 
     public AccountType getType() {
-        return Type;
+        return type;
     }
 
     public Date getOpeningDate() {
-        return OpeningDate;
+        return openingDate;
     }
 
     public String getFormattedOpeningDate() {
@@ -83,35 +83,35 @@ public class Account {
     }
 
     public void setAccountNumber(String accountNumber) {
-        AccountNumber = accountNumber;
+        this.accountNumber = accountNumber;
     }
 
     public void setAccountStatus(String accountStatus) {
-        AccountStatus = accountStatus;
+        this.accountStatus = accountStatus;
     }
 
     public void setClient(Client client) {
-        Client = client;
+        this.client = client;
     }
 
     public void setAccountBalance(double accountBalance) {
-        AccountBalance = accountBalance;
+        this.accountBalance = accountBalance;
     }
 
     public void setDepartment(Department department) {
-        Department = department;
+        this.department = department;
     }
 
     public void setType(AccountType type) {
-        Type = type;
+        this.type = type;
     }
 
     public void setOpeningDate(Date openingDate) {
-        OpeningDate = openingDate;
+        this.openingDate = openingDate;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "AccountNumber=" + AccountNumber + ", AccountStatus=" + AccountStatus + "}";
+        return "Account{" + "AccountNumber=" + accountNumber + ", AccountStatus=" + accountStatus + "}";
     }
 }

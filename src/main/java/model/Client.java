@@ -13,25 +13,25 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_id_generator")
     @SequenceGenerator(name="client_id_generator", sequenceName = "client_id_seq", allocationSize = 1)
     @Column(name = "client_id")
-    private long ClientId;
+    private long clientId;
 
     @Column(name = "client_name", length = 80, nullable = false)
-    private String ClientName;
+    private String clientName;
 
     @Column(name = "phone_number", length = 20)
-    private String PhoneNumber;
+    private String phoneNumber;
 
     @Column(name = "email", length = 50)
-    private String Email;
+    private String email;
 
     @Column(name = "client_address", length = 200)
-    private String ClientAddress;
+    private String clientAddress;
 
     @Column(name = "registration_date", nullable = false)
-    private Date RegistrationDate;
+    private Date registrationDate;
 
     @Column(name = "client_type")
-    private String ClientType;
+    private String clientType;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "Client")
     private Set<Account> accounts;
@@ -41,36 +41,36 @@ public class Client {
 
     public Client(String ClientName, String PhoneNumber, String Email, String ClientAddress,
                   Date RegistrationDate, String ClientType) {
-        this.ClientName = ClientName;
-        this.PhoneNumber = PhoneNumber;
-        this.Email = Email;
-        this.ClientAddress = ClientAddress;
-        this.RegistrationDate = RegistrationDate;
-        this.ClientType = ClientType;
+        this.clientName = ClientName;
+        this.phoneNumber = PhoneNumber;
+        this.email = Email;
+        this.clientAddress = ClientAddress;
+        this.registrationDate = RegistrationDate;
+        this.clientType = ClientType;
     }
 
     public long getClientId() {
-        return ClientId;
+        return clientId;
     }
 
     public String getClientName() {
-        return ClientName;
+        return clientName;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getClientAddress() {
-        return ClientAddress;
+        return clientAddress;
     }
 
     public Date getRegistrationDate() {
-        return RegistrationDate;
+        return registrationDate;
     }
 
     public String getFormattedRegistrationDate() {
@@ -80,40 +80,40 @@ public class Client {
     }
 
     public String getClientType() {
-        return ClientType;
+        return clientType;
     }
 
     public void setClientId(long clientId) {
-        this.ClientId = clientId;
+        this.clientId = clientId;
     }
 
     public void setClientName(String clientName) {
-        this.ClientName = clientName;
+        this.clientName = clientName;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public void setEmail(String email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public void setClientAddress(String clientAddress) {
-        this.ClientAddress = clientAddress;
+        this.clientAddress = clientAddress;
     }
 
     public void setRegistrationDate(Date registrationDate) {
-        this.RegistrationDate = registrationDate;
+        this.registrationDate = registrationDate;
     }
 
     public void setClientType(String clientType) {
-        this.ClientType = clientType;
+        this.clientType = clientType;
     }
 
 
     @Override
     public String toString() {
-        return "Client{" + "ClientId=" + ClientId + ", ClientName=" + ClientName + "}";
+        return "Client{" + "ClientId=" + clientId + ", ClientName=" + clientName + "}";
     }
 }

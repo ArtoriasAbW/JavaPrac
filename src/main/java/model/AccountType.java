@@ -10,73 +10,73 @@ public class AccountType {
     @SequenceGenerator(name = "accountType_seq", sequenceName = "accountType_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountType_seq")
     @Column(name = "type_id")
-    private long TypeId;
+    private long typeId;
 
     @Column(name = "type_name")
-    private String TypeName;
+    private String typeName;
 
     @Column(name = "max_credit")
-    private long MaxCredit;
+    private long maxCredit;
 
     @Column(name = "profitability")
-    private long Profitability;
+    private long profitability;
 
     @Column(name = "additional_info")
-    private String AdditionalInfo;
+    private String additionalInfo;
 
     public AccountType() {
 
     }
 
     public AccountType(String TypeName, long MaxCredit, long Profitability, String AdditionalInfo) {
-        this.TypeName = TypeName;
-        this.MaxCredit = MaxCredit;
-        this.Profitability = Profitability;
-        this.AdditionalInfo = AdditionalInfo;
+        this.typeName = TypeName;
+        this.maxCredit = MaxCredit;
+        this.profitability = Profitability;
+        this.additionalInfo = AdditionalInfo;
     }
 
     public long getTypeId() {
-        return TypeId;
+        return typeId;
     }
 
     public String getTypeName() {
-        return TypeName;
+        return typeName;
     }
 
     public long getMaxCredit() {
-        return MaxCredit;
+        return maxCredit;
     }
 
     public long getProfitability() {
-        return Profitability;
+        return profitability;
     }
 
     public String getAdditionalInfo() {
-        return AdditionalInfo;
+        return additionalInfo;
     }
 
     public void setTypeId(long typeId) {
-        TypeId = typeId;
+        this.typeId = typeId;
     }
 
     public void setTypeName(String typeName) {
-        TypeName = typeName;
+        this.typeName = typeName;
     }
 
     public void setMaxCredit(long maxCredit) {
-        MaxCredit = maxCredit;
+        this.maxCredit = maxCredit;
     }
 
     public void setProfitability(long profitability) {
-        Profitability = profitability;
+        this.profitability = profitability;
     }
 
     public void setAdditionalInfo(String additionalInfo) {
-        AdditionalInfo = additionalInfo;
+        this.additionalInfo = additionalInfo;
     }
 
     @Override
     public String toString() {
-        return "AccountType{" + "TypeId=" + TypeId + ", TypeName=" + TypeName + "}";
+        return "AccountType{" + "TypeId=" + typeId + ", TypeName=" + typeName + "}";
     }
 }

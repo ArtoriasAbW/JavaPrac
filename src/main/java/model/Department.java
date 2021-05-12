@@ -13,25 +13,25 @@ public class Department {
     @SequenceGenerator(name="department_id_generator", sequenceName="department_id_seq", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="department_id_generator")
     @Column(name="department_id")
-    private long DepartmentId;
+    private long departmentId;
 
     @Column(name="department_name", length = 80)
     @NotNull
     @NotBlank
     @Size(min=5, max=40)
-    private String DepartmentName;
+    private String departmentName;
 
     @Column(name="department_address", length = 200)
     @NotNull
     @NotBlank
     @Size(min=5, max=50)
-    private String DepartmentAddress;
+    private String departmentAddress;
 
     @Column(name="department_phone_number", length = 20)
     @NotNull
     @NotBlank
     @Size(min=5, max=20)
-    private String DepartmentPhoneNumber;
+    private String departmentPhoneNumber;
 
     public Department() {
 
@@ -39,41 +39,41 @@ public class Department {
 
     public Department(String DepartmentName,
                       String DepartmentAddress, String DepartmentPhoneNumber) {
-        this.DepartmentName = DepartmentName;
-        this.DepartmentAddress = DepartmentAddress;
-        this.DepartmentPhoneNumber = DepartmentPhoneNumber;
+        this.departmentName = DepartmentName;
+        this.departmentAddress = DepartmentAddress;
+        this.departmentPhoneNumber = DepartmentPhoneNumber;
     }
 
     public long getDepartmentId() {
-        return DepartmentId;
+        return departmentId;
     }
 
     public String getDepartmentName() {
-        return DepartmentName;
+        return departmentName;
     }
 
     public String getDepartmentAddress() {
-        return DepartmentAddress;
+        return departmentAddress;
     }
 
     public String getDepartmentPhoneNumber() {
-        return DepartmentPhoneNumber;
+        return departmentPhoneNumber;
     }
 
     public void setDepartmentName(String departmentName) {
-        this.DepartmentName = departmentName;
+        this.departmentName = departmentName;
     }
 
     public void setDepartmentAddress(String departmentAddress) {
-        this.DepartmentAddress = departmentAddress;
+        this.departmentAddress = departmentAddress;
     }
 
     public void setDepartmentPhoneNumber(String departmentPhoneNumber) {
-        this.DepartmentPhoneNumber = departmentPhoneNumber;
+        this.departmentPhoneNumber = departmentPhoneNumber;
     }
 
     @Override
     public String toString() {
-        return "Department{" + "DepartmentId=" + DepartmentId + ", DepartmentName=" + DepartmentName + "}";
+        return "Department{" + "DepartmentId=" + departmentId + ", DepartmentName=" + departmentName + "}";
     }
 }

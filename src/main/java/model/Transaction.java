@@ -10,40 +10,40 @@ public class Transaction {
 
     @Id
     @Column(name = "transaction_id", length = 15)
-    private String TransactionId;
+    private String transactionId;
 
     @Column(name = "transaction_date")
-    private Date TransactionDate;
+    private Date transactionDate;
 
     @ManyToOne
     @JoinColumn(name = "sender", referencedColumnName = "account_number")
-    private Account Sender;
+    private Account sender;
 
     @ManyToOne
     @JoinColumn(name = "receiver", referencedColumnName = "account_number")
-    private Account Receiver;
+    private Account receiver;
 
     @Column(name = "amount")
-    private float Amount;
+    private float amount;
 
     public Transaction() {
 
     }
 
     public Transaction(String transactionId, Date transactionDate, Account sender, Account receiver, float amount) {
-        this.TransactionId = transactionId;
-        this.TransactionDate = transactionDate;
-        this.Sender = sender;
-        this.Receiver = receiver;
-        this.Amount = amount;
+        this.transactionId = transactionId;
+        this.transactionDate = transactionDate;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.amount = amount;
     }
 
     public String getTransactionId() {
-        return TransactionId;
+        return transactionId;
     }
 
     public Date getTransactionDate() {
-        return TransactionDate;
+        return transactionDate;
     }
 
     public String getFormattedTransactionDate() {
@@ -53,39 +53,39 @@ public class Transaction {
     }
 
     public Account getSender() {
-        return Sender;
+        return sender;
     }
 
     public Account getReceiver() {
-        return Receiver;
+        return receiver;
     }
 
     public float getAmount() {
-        return Amount;
+        return amount;
     }
 
     public void setTransactionId(String transactionId) {
-        TransactionId = transactionId;
+        this.transactionId = transactionId;
     }
 
     public void setTransactionDate(Date transactionDate) {
-        TransactionDate = transactionDate;
+        this.transactionDate = transactionDate;
     }
 
     public void setSender(Account sender) {
-        Sender = sender;
+        this.sender = sender;
     }
 
     public void setReceiver(Account receiver) {
-        Receiver = receiver;
+        this.receiver = receiver;
     }
 
     public void setAmount(float amount) {
-        Amount = amount;
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
-        return "Transaction{" + "TransactionDate=" + TransactionDate + ", TransactionDate=" + TransactionDate + "}";
+        return "Transaction{" + "TransactionDate=" + transactionDate + ", TransactionDate=" + transactionDate + "}";
     }
 }
