@@ -1,5 +1,6 @@
 package DAO;
 
+import model.Account;
 import model.Department;
 
 import java.util.ArrayList;
@@ -11,4 +12,5 @@ public interface DepartmentDAO {
     Department getDepartmentById(Long department_id);
     ArrayList<Department> getAllDepartments();
     void deleteDepartment(Long department_id);
+    ArrayList<Account> getAllDepartmentAccounts(Long department_id);
 }

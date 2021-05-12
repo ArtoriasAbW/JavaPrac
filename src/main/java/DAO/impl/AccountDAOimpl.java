@@ -101,11 +101,10 @@ public class AccountDAOimpl implements AccountDAO {
 
     @Override
     public Client getClientByAccountNumber(String accountNumber) {
-        Client client = new Client();
         Session session = MyFactory.getFactory().openSession();
         session.beginTransaction();
         Account account = getAccountByNumber(accountNumber);
-        client = account.getClient();
+        Client client = account.getClient();
         session.getTransaction().commit();
         if (session.isOpen()) {
             session.close();

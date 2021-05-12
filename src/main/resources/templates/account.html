@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Информация об отделении</title>
+    <title>Информация о счете</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -9,13 +9,17 @@
 <p th:text="'Номер счета: ' + ${accountNumber}"></p>
 <p th:text="'Баланс счета: ' + ${accountBalance}"></p>
 <p th:text="'Статус счета: ' + ${accountStatus}"></p>
-<p th:text="'Владелец: ' + ${Client.getClientName()}"></p>
-<p th:text="'Отделение: ' + ${Department.getDepartmentName()}"></p>
+<p>Владелец:
+    <a th:href="@{'/clients/' + ${Client.getClientId()}}" class="btn" th:text="${Client.getClientName()}"></a>
+</p>
+<p>Отделение:
+    <a th:href="@{'/departments/' + ${Department.getDepartmentId()}}" class="btn" th:text="${Department.getDepartmentName()}"></a>
+</p>
 <p th:text="'Дата создания: ' + ${openingDate}"></p>
-<form th:action="'/departments/' + ${accountNumber} + '/update'" method="get">
+<form th:action="'/accounts/' + ${accountNumber} + '/update'" method="get">
     <input type="submit" value="Редактировать">
 </form>
-<form action="/departments/delete" method="post">
+<form action="/accounts/delete" method="post">
     <input type="hidden" name="id" th:value="${accountNumber}">
     <input type="submit" value="Удалить">
 </form>

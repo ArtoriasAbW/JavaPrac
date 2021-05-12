@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Информация о клиенте</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-
+<a href="/clients" class="btn">Список клиентов</a>
+<p th:text="'Имя клиента: ' + ${clientName}"></p>
+<p th:text="'Адрес клиента: ' + ${clientAddress}"></p>
+<p th:text="'Email клиента: ' + ${clientEmail}"></p>
+<p th:text="'Телефон клиента: ' + ${clientPhoneNumber}"></p>
+<p th:text="'Тип клиента: ' + ${clientType}"></p>
+<p th:text="'Дата регистрации клиента: ' + ${clientRegistrationDate}"></p>
+<a th:href="'http://localhost:8080/accounts?clientid=' + ${clientId}" th:text="Счета"></a>
+<form th:action="'/clients/' + ${clientId} + '/update'" method="get">
+    <input type="submit" value="Редактировать">
+</form>
+<form action="/clients/delete" method="post">
+    <input type="hidden" name="id" th:value="${clientId}">
+    <input type="submit" value="Удалить">
+</form>
 </body>
 </html>

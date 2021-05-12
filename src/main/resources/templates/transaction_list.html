@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Счета</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<a href="/" class="btn">Домашняя страница</a>
+<tr th:each="transaction : ${transactions}">
+    <p align="center">
+        <a th:href="@{'/transactions/' + ${transaction.getTransactionId()}}">
+            <td th:text="${transaction.getTransactionId()}"></td>
+        </a>
+    </p>
+</tr>
+<form action="/accounts/form" method="get">
+    <input type="submit" value="Добавить">
+</form>
+</body>
+</html>

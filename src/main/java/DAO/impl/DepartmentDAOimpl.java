@@ -3,6 +3,7 @@ package DAO.impl;
 import DAO.DepartmentDAO;
 import factory.MyFactory;
 import model.Account;
+import model.Client;
 import model.Department;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -35,7 +36,7 @@ public class DepartmentDAOimpl implements DepartmentDAO {
         session.evict(dep);
         dep.setDepartmentAddress(department.getDepartmentAddress());
         dep.setDepartmentName(department.getDepartmentName());
-        dep.setDepartmentsPhoneNumber(department.getDepartmentsPhoneNumber());
+        dep.setDepartmentPhoneNumber(department.getDepartmentPhoneNumber());
         session.update(dep);
         session.getTransaction().commit();
         if (session.isOpen()) {
@@ -79,5 +80,20 @@ public class DepartmentDAOimpl implements DepartmentDAO {
         if (session.isOpen()) {
             session.close();
         }
+    }
+
+    @Override
+    public ArrayList<Account> getAllDepartmentAccounts(Long department_id) {
+        Session session = MyFactory.getFactory().openSession();
+        session.beginTransaction();
+        Department department = getDepartmentById(department_id);
+        Query query = session.createQuery("FROM Account A WHERE A.Department = :department");
+        query.setParameter("department", department);
+        ArrayList<Account> accounts = (ArrayList<Account>) query.list();
+        session.getTransaction().commit();
+        if (session.isOpen()) {
+            session.close();
+        }
+        return accounts;
     }
 }

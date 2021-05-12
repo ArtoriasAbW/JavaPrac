@@ -1,6 +1,9 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "departments")
@@ -13,13 +16,22 @@ public class Department {
     private long DepartmentId;
 
     @Column(name="department_name", length = 80)
+    @NotNull
+    @NotBlank
+    @Size(min=5, max=40)
     private String DepartmentName;
 
     @Column(name="department_address", length = 200)
+    @NotNull
+    @NotBlank
+    @Size(min=5, max=50)
     private String DepartmentAddress;
 
     @Column(name="department_phone_number", length = 20)
-    private String DepartmentsPhoneNumber;
+    @NotNull
+    @NotBlank
+    @Size(min=5, max=20)
+    private String DepartmentPhoneNumber;
 
     public Department() {
 
@@ -29,7 +41,7 @@ public class Department {
                       String DepartmentAddress, String DepartmentPhoneNumber) {
         this.DepartmentName = DepartmentName;
         this.DepartmentAddress = DepartmentAddress;
-        this.DepartmentsPhoneNumber = DepartmentPhoneNumber;
+        this.DepartmentPhoneNumber = DepartmentPhoneNumber;
     }
 
     public long getDepartmentId() {
@@ -44,12 +56,8 @@ public class Department {
         return DepartmentAddress;
     }
 
-    public String getDepartmentsPhoneNumber() {
-        return DepartmentsPhoneNumber;
-    }
-
-    public void setDepartmentId(long departmentId) {
-        this.DepartmentId = departmentId;
+    public String getDepartmentPhoneNumber() {
+        return DepartmentPhoneNumber;
     }
 
     public void setDepartmentName(String departmentName) {
@@ -60,8 +68,8 @@ public class Department {
         this.DepartmentAddress = departmentAddress;
     }
 
-    public void setDepartmentsPhoneNumber(String departmentsPhoneNumber) {
-        this.DepartmentsPhoneNumber = departmentsPhoneNumber;
+    public void setDepartmentPhoneNumber(String departmentPhoneNumber) {
+        this.DepartmentPhoneNumber = departmentPhoneNumber;
     }
 
     @Override

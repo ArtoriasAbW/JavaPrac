@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="#" th:action="${action}" th:object="${department}" method="post">
+    <table>
+        <tr>
+            <td>Название отделения:</td>
+            <td><input id="name" type="text" th:field="*{DepartmentName}"/></td>
+            <td th:if="${#fields.hasErrors('DepartmentName')}" th:errors="*{DepartmentName}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Адрес отделения:</td>
+            <td><input id="address" type="text" value="dsada" th:field="*{DepartmentAddress}" /></td>
+            <td th:if="${#fields.hasErrors('DepartmentAddress')}" th:errors="*{DepartmentAddress}">Address Error</td>
+        </tr>
+        <tr>
+            <td>Телефон отделения:</td>
+            <td><input id="phone" type="text" th:field="*{DepartmentPhoneNumber}" th:value="das"/></td>
+            <td th:if="${#fields.hasErrors('DepartmentPhoneNumber')}" th:errors="*{DepartmentPhoneNumber}">PhoneNumber Error</td>
+        </tr>
+            <td><button th:if="${operation == 'add'}" id="add" type="submit">Добавить</button></td>
+            <td><button th:if="${operation == 'update'}" id = "update" type="submit">Редактировать</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
