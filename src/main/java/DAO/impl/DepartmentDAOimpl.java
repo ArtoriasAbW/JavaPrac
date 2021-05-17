@@ -87,7 +87,7 @@ public class DepartmentDAOimpl implements DepartmentDAO {
         Session session = MyFactory.getFactory().openSession();
         session.beginTransaction();
         Department department = getDepartmentById(department_id);
-        Query query = session.createQuery("FROM Account A WHERE A.Department = :department");
+        Query query = session.createQuery("FROM Account A WHERE A.department = :department");
         query.setParameter("department", department);
         ArrayList<Account> accounts = (ArrayList<Account>) query.list();
         session.getTransaction().commit();

@@ -1,6 +1,11 @@
 package model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
@@ -15,21 +20,34 @@ public class Client {
     @Column(name = "client_id")
     private long clientId;
 
+    @NotNull
+    @NotBlank
     @Column(name = "client_name", length = 80, nullable = false)
     private String clientName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
+    @NotNull
+    @NotBlank
     @Column(name = "email", length = 50)
     private String email;
 
+    @NotNull
+    @NotBlank
     @Column(name = "client_address", length = 200)
     private String clientAddress;
 
+
     @Column(name = "registration_date", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date registrationDate;
 
+    @NotNull
+    @NotBlank
     @Column(name = "client_type")
     private String clientType;
 

@@ -89,7 +89,7 @@ public class AccountDAOimpl implements AccountDAO {
         session.beginTransaction();
         Account curAccount = getAccountByNumber(accountNumber);
         Query query = session.createQuery(
-                "FROM Transaction t WHERE t.Receiver = :curAccount OR t.Sender = :curAccount");
+                "FROM Transaction t WHERE t.receiver = :curAccount OR t.sender = :curAccount");
         query.setParameter("curAccount", curAccount);
         transactions = (ArrayList<Transaction>) query.list();
         session.getTransaction().commit();

@@ -1,19 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-<form action="/clients" method="post">
-    <p><b>Добавление нового клиента</b></p>
-    <p><input type="text" name="clientName">Имя<Br>
-        <input type="text" name="clientPhoneNumber">Телефон<Br>
-        <input type="text" name="clientEmail">Email клиента<Br>
-        <input type="text" name="clientAddress">Адрес клиента<Br>
-        <input type="text" name="clientRegistrationDate">Дата регистрации<Br>
-        <input type="text" name="clientType">Тип<Br></p>
-    <p><input type="submit" value="Добавить"></p>
+<form action="#" th:action="${action}" th:object="${client}" method="post">
+    <table>
+        <tr>
+            <td>Имя клиента:</td>
+            <td><input id="name" type="text" th:field="*{clientName}"/></td>
+            <td th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}">clientName Error</td>
+        </tr>
+        <tr>
+            <td>Телефон клиента:</td>
+            <td><input id="phone" type="text" value="dsada" th:field="*{phoneNumber}" /></td>
+            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">clientPhoneNumber Error</td>
+        </tr>
+        <tr>
+            <td>Email клиента:</td>
+            <td><input id="email" type="text" th:field="*{email}" th:value="das"/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">clientEmail Error</td>
+        </tr>
+        <tr>
+            <td>Адрес клиента:</td>
+            <td><input id="address" type="text" th:field="*{clientAddress}" th:value="das"/></td>
+            <td th:if="${#fields.hasErrors('clientAddress')}" th:errors="*{clientAddress}">clientAddress Error</td>
+        </tr>
+        <tr>
+            <td>Дата регистрации клиента:</td>
+            <td><input id="date" type="date" th:field="*{registrationDate}" th:value="das"/></td>
+            <td th:if="${#fields.hasErrors('registrationDate')}" th:errors="*{registrationDate}">clientRegistrationDate Error</td>
+        </tr>
+        <tr>
+            <td>Тип клиента:</td>
+            <td><input id="type" type="text" th:field="*{clientType}" th:value="das"/></td>
+            <td th:if="${#fields.hasErrors('clientType')}" th:errors="*{clientType}">Client Type Error</td>
+        </tr>
+        <td><button th:if="${operation == 'add'}" id="add" type="submit">Добавить</button></td>
+        <td><button th:if="${operation == 'update'}" id = "update" type="submit">Редактировать</button></td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

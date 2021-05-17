@@ -45,7 +45,6 @@ public class DepartmentController {
     public String addDepartment(@Valid Department department, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("operation", "add");
-            model.addAttribute("action", "/departments");
             return "department_form";
         }
         department_dao.addDepartment(department);

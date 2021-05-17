@@ -17,7 +17,7 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "client", referencedColumnName = "client_id")
-    private Client client;
+    private Client Client;
 
     @Column(name = "account_balance")
     private double accountBalance;
@@ -41,7 +41,7 @@ public class Account {
                    double AccountBalance, Department Department, AccountType Type, Date OpeningDate) {
         this.accountNumber = AccountNumber;
         this.accountStatus = AccountStatus;
-        this.client = Client;
+        this.Client = Client;
         this.accountBalance = AccountBalance;
         this.department = Department;
         this.type = Type;
@@ -57,7 +57,7 @@ public class Account {
     }
 
     public Client getClient() {
-        return client;
+        return Client;
     }
 
     public double getAccountBalance() {
@@ -91,7 +91,7 @@ public class Account {
     }
 
     public void setClient(Client client) {
-        this.client = client;
+        this.Client = client;
     }
 
     public void setAccountBalance(double accountBalance) {
