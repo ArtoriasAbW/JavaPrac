@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-
+<form action="#" th:action="${action}" th:object="${transaction}" method="post">
+    <table>
+        <tr>
+            <td>Идентификатор транзакции: </td>
+            <td><input id="id" type="text" th:field="*{transactionId}"/></td>
+            <td th:if="${#fields.hasErrors('transactionId')}" th:errors="*{transactionId}">transactionId Error</td>
+        </tr>
+        <tr>
+            <td>Время транзакции: </td>
+            <td><input id="date" type="date" th:field="*{transactionDate}" /></td>
+            <td th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}">transactionDate Error</td>
+        </tr>
+        <tr>
+            <td>Отправитель:</td>
+            <td><select th:field="*{sender.accountNumber}">
+                <option th:each="account : ${allaccounts}"
+                        th:value="${account.getAccountNumber()}"
+                        th:text="${account.getAccountNumber()}"></option>
+            </select></td>
+            <td th:if="${#fields.hasErrors('sender')}" th:errors="*{sender}">sender Error</td>
+        </tr>
+        <tr>
+            <td>Получатель:</td>
+            <td><select th:field="*{receiver.accountNumber}">
+                <option th:each="account : ${allaccounts}"
+                        th:value="${account.getAccountNumber()}"
+                        th:text="${account.getAccountNumber()}"></option>
+            </select></td>
+            <td th:if="${#fields.hasErrors('receiver')}" th:errors="*{receiver}">receiver Error</td>
+        </tr>
+        <tr>
+            <td>Сумма: </td>
+            <td><input id="balance" type="number" th:field="*{amount}" /></td>
+            <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">amount Error</td>
+        </tr>
+        <td><button th:if="${operation == 'add'}" id="add" type="submit">Добавить</button></td>
+        <td><button th:if="${operation == 'update'}" id = "update" type="submit">Редактировать</button></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

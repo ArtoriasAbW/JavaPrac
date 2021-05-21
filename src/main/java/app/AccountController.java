@@ -1,7 +1,6 @@
 package app;
 
 import DAO.impl.*;
-import com.sun.xml.bind.v2.runtime.BinderImpl;
 import model.Account;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.Map;
-import java.util.function.BinaryOperator;
 
 @Controller
 public class AccountController {

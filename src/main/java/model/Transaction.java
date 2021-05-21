@@ -1,6 +1,9 @@
 package model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,6 +16,8 @@ public class Transaction {
     private String transactionId;
 
     @Column(name = "transaction_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date transactionDate;
 
     @ManyToOne

@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td>Баланс счета:</td>
-            <td><input id="balance" type="number" value="dsada" th:field="*{accountBalance}" /></td>
+            <td><input id="balance" type="number" th:field="*{accountBalance}" /></td>
             <td th:if="${#fields.hasErrors('accountBalance')}" th:errors="*{accountBalance}">accountBalance Error</td>
         </tr>
         <tr>
