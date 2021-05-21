@@ -47,7 +47,7 @@
                 <option th:each="type : ${alltypes}"
                         th:value="${type.getTypeId()}"
                         th:text="${type.getTypeName()}"></option>
-            </select>></td>
+            </select></td>
             <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">type Error</td>
         </tr>
         <td><button th:if="${operation == 'add'}" id="add" type="submit">Добавить</button></td>

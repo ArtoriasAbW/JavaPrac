@@ -62,9 +62,6 @@ public class AccountController {
         Long department_id = account.getDepartment().getDepartmentId();
         Long client_id = account.getClient().getClientId();
         Long type_id = account.getType().getTypeId();
-        System.out.println(department_id);
-        System.out.println(client_id);
-        System.out.println(type_id);
         if (bindingResult.hasErrors()) {
             model.addAttribute("operation", "add");
             model.addAttribute("action", "/accounts");
@@ -80,10 +77,44 @@ public class AccountController {
         return "redirect:/accounts";
     }
 
-    @PostMapping("accounts/delete")
-    public String deleteAccount(@RequestParam String accountNumber) {
-        account_dao.deleteAccount(accountNumber);
+    @PostMapping("/accounts/delete")
+    public String deleteAccount(@RequestParam Map<String, String> body) {
+        account_dao.deleteAccount(body.get("id"));
         return "redirect:/accounts";
+    }
+
+    @GetMapping("/accounts/{accountNumber}/update")
+    public String updateAccountForm(@PathVariable String accountNumber, Model model) {
+        model.addAttribute("account", account_dao.getAccountByNumber(accountNumber));
+        model.addAttribute("alldepartments", new DepartmentDAOimpl().getAllDepartments());
+        model.addAttribute("allclients", new ClientDAOimpl().getAllClients());
+        model.addAttribute("alltypes", new AccountTypeDAOimpl().getAllAccountTypes());
+        model.addAttribute("operation", "update");
+        model.addAttribute("action", "/accounts/" + accountNumber);
+        return "account_form";
+    }
+
+    @PostMapping("accounts/{accountNumber}")
+    public String updateAccount(@Valid Account account,
+                                BindingResult bindingResult,
+                                Model model,
+                                @PathVariable String accountNumber) {
+        Long department_id = account.getDepartment().getDepartmentId();
+        Long client_id = account.getClient().getClientId();
+        Long type_id = account.getType().getTypeId();
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("operation", "update");
+            model.addAttribute("action", "/accounts/" + accountNumber);
+            model.addAttribute("alldepartments", new DepartmentDAOimpl().getAllDepartments());
+            model.addAttribute("allclients", new ClientDAOimpl().getAllClients());
+            model.addAttribute("alltypes", new AccountTypeDAOimpl().getAllAccountTypes());
+            return "account_form";
+        }
+        account.setDepartment(new DepartmentDAOimpl().getDepartmentById(department_id));
+        account.setClient(new ClientDAOimpl().getClientById(client_id));
+        account.setType(new AccountTypeDAOimpl().getAccountTypeById(type_id));
+        account_dao.UpdateAccount(accountNumber, account);
+        return "redirect:/accounts/{accountNumber}";
     }
 
 }
