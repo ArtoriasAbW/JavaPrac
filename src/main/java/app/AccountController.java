@@ -40,6 +40,7 @@ public class AccountController {
         model.addAttribute("accountStatus", account.getAccountStatus());
         model.addAttribute("Client", account.getClient());
         model.addAttribute("Department", account.getDepartment());
+        model.addAttribute("AccountType", account.getType());
         model.addAttribute("openingDate", account.getFormattedOpeningDate());
         return "account";
     }

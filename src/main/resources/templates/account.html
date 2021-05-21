@@ -15,6 +15,9 @@
 <p>Отделение:
     <a th:href="@{'/departments/' + ${Department.getDepartmentId()}}" class="btn" th:text="${Department.getDepartmentName()}"></a>
 </p>
+<p>Тип счета:
+    <a th:href="@{'/accounttypes/' + ${AccountType.getTypeId()}}" class="btn" th:text="${AccountType.getTypeName()}"></a>
+</p>
 <p th:text="'Дата создания: ' + ${openingDate}"></p>
 <form th:action="'/accounts/' + ${accountNumber} + '/update'" method="get">
     <input type="submit" value="Редактировать">
