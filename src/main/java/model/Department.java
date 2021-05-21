@@ -16,19 +16,16 @@ public class Department {
     private long departmentId;
 
     @Column(name="department_name", length = 80)
-    @NotNull
     @NotBlank
     @Size(min=5, max=40)
     private String departmentName;
 
     @Column(name="department_address", length = 200)
-    @NotNull
     @NotBlank
     @Size(min=5, max=50)
     private String departmentAddress;
 
     @Column(name="department_phone_number", length = 20)
-    @NotNull
     @NotBlank
     @Size(min=5, max=20)
     private String departmentPhoneNumber;
@@ -43,6 +40,7 @@ public class Department {
         this.departmentAddress = DepartmentAddress;
         this.departmentPhoneNumber = DepartmentPhoneNumber;
     }
+
 
     public long getDepartmentId() {
         return departmentId;
@@ -75,5 +73,9 @@ public class Department {
     @Override
     public String toString() {
         return "Department{" + "DepartmentId=" + departmentId + ", DepartmentName=" + departmentName + "}";
+    }
+
+    public void setDepartmentId(long departmentId) {
+        this.departmentId = departmentId;
     }
 }

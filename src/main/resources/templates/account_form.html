@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="#" th:action="${action}" th:object="${account}" method="post">
+    <table>
+        <tr>
+            <td>Номер счета:</td>
+            <td><input id="number" type="text" th:field="*{accountNumber}"/></td>
+            <td th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">accountNumber Error</td>
+        </tr>
+        <tr>
+            <td>Баланс счета:</td>
+            <td><input id="balance" type="number" value="dsada" th:field="*{accountBalance}" /></td>
+            <td th:if="${#fields.hasErrors('accountBalance')}" th:errors="*{accountBalance}">accountBalance Error</td>
+        </tr>
+        <tr>
+            <td>Статус счета:</td>
+            <td><input id="status" type="text" th:field="*{accountStatus}"/></td>
+            <td th:if="${#fields.hasErrors('accountStatus')}" th:errors="*{accountStatus}">accountStatus Error</td>
+        </tr>
+        <tr>
+            <td>Владелец:</td>
+            <td><select th:field="*{client.clientId}">
+                <option th:each="client : ${allclients}"
+                        th:value="${client.getClientId()}"
+                        th:text="${client.getClientName()}"></option>
+            </select></td>
+            <td th:if="${#fields.hasErrors('client')}" th:errors="*{client}">client Error</td>
+        </tr>
+        <tr>
+            <td>Отделение:</td>
+            <td><select th:field="*{department.departmentId}">
+                <option th:each="department : ${alldepartments}"
+                        th:value="${department.getDepartmentId()}"
+                        th:text="${department.getDepartmentName()}"></option>
+            </select></td>
+            <td th:if="${#fields.hasErrors('department')}" th:errors="*{department}">department Error</td>
+        </tr>
+        <tr>
+            <td>Дата открытия:</td>
+            <td><input id="date" type="date" th:field="*{openingDate}" th:value="das"/></td>
+            <td th:if="${#fields.hasErrors('openingDate')}" th:errors="*{openingDate}">openingDate Error</td>
+        </tr>
+        <tr>
+            <td>Тип:</td>
+            <td><select th:field="*{type.typeId}">
+                <option th:each="type : ${alltypes}"
+                        th:value="${type.getTypeId()}"
+                        th:text="${type.getTypeName()}"></option>
+            </select>></td>
+            <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">type Error</td>
+        </tr>
+        <td><button th:if="${operation == 'add'}" id="add" type="submit">Добавить</button></td>
+        <td><button th:if="${operation == 'update'}" id = "update" type="submit">Редактировать</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

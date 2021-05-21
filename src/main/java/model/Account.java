@@ -1,6 +1,10 @@
 package model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,9 +14,12 @@ public class Account {
 
     @Id
     @Column(name = "account_number", length = 12)
+    @NotBlank
     private String accountNumber;
 
     @Column(name = "account_status")
+    @NotNull
+    @NotBlank
     private String accountStatus;
 
     @ManyToOne
@@ -20,6 +27,7 @@ public class Account {
     private Client Client;
 
     @Column(name = "account_balance")
+    @NotNull
     private double accountBalance;
 
     @ManyToOne
@@ -31,7 +39,11 @@ public class Account {
     private AccountType type;
 
     @Column(name = "opening_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date openingDate;
+
+
 
     public Account() {
 

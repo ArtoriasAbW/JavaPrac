@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/test" th:object="${client}" method="post">
+<select th:field="*{clientId}">
+    <option th:each="client : ${all_clients}"
+            th:value="${client.getClientId()}"
+            th:text="${client.getClientName()}"></option>
+</select>
+    <td><button type="submit">Добавить</button></td>
+</form>
+</body>
+</html>

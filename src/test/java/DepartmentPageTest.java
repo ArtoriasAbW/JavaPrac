@@ -43,6 +43,6 @@ public class DepartmentPageTest {
 
     @Test
     public void updateDepartment() {
-        driver.findElement(By.id("phone")).clear();
+//        driver.findElement(By.id("phone")).clear();
     }
 }
