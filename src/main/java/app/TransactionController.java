@@ -70,7 +70,7 @@ public class TransactionController {
     public String updateAccountForm(@PathVariable String transactionId, Model model) {
         model.addAttribute("transaction", transaction_dao.getTransactionById(transactionId));
         model.addAttribute("allaccounts", new AccountDAOimpl().getAllAccounts());
-        model.addAttribute("operation", "add");
+        model.addAttribute("operation", "update");
         model.addAttribute("action", "/transactions/" + transactionId);
         return "transaction_form";
     }

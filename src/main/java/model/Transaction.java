@@ -3,6 +3,8 @@ package model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,12 +14,15 @@ import java.util.Date;
 public class Transaction {
 
     @Id
+    @NotNull
+    @NotBlank
     @Column(name = "transaction_id", length = 15)
     private String transactionId;
 
     @Column(name = "transaction_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
+    @NotNull
     private Date transactionDate;
 
     @ManyToOne
@@ -29,6 +34,7 @@ public class Transaction {
     private Account receiver;
 
     @Column(name = "amount")
+    @NotNull
     private float amount;
 
     public Transaction() {

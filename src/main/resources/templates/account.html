@@ -6,25 +6,25 @@
 </head>
 <body>
 <a href="/accounts" class="btn">Список счетов</a>
-<p th:text="'Номер счета: ' + ${accountNumber}"></p>
-<p th:text="'Баланс счета: ' + ${accountBalance}"></p>
-<p th:text="'Статус счета: ' + ${accountStatus}"></p>
+<p id="number" th:text="'Номер счета: ' + ${accountNumber}"></p>
+<p id="balance" th:text="'Баланс счета: ' + ${accountBalance}"></p>
+<p id="status" th:text="'Статус счета: ' + ${accountStatus}"></p>
 <p>Владелец:
-    <a th:href="@{'/clients/' + ${Client.getClientId()}}" class="btn" th:text="${Client.getClientName()}"></a>
+    <a id="client" th:href="@{'/clients/' + ${Client.getClientId()}}" class="btn" th:text="${Client.getClientName()}"></a>
 </p>
 <p>Отделение:
-    <a th:href="@{'/departments/' + ${Department.getDepartmentId()}}" class="btn" th:text="${Department.getDepartmentName()}"></a>
+    <a id="department" th:href="@{'/departments/' + ${Department.getDepartmentId()}}" class="btn" th:text="${Department.getDepartmentName()}"></a>
 </p>
 <p>Тип счета:
-    <a th:href="@{'/accounttypes/' + ${AccountType.getTypeId()}}" class="btn" th:text="${AccountType.getTypeName()}"></a>
+    <a id="type" th:href="@{'/accounttypes/' + ${AccountType.getTypeId()}}" class="btn" th:text="${AccountType.getTypeName()}"></a>
 </p>
-<p th:text="'Дата создания: ' + ${openingDate}"></p>
+<p id="date" th:text="'Дата создания: ' + ${openingDate}"></p>
 <form th:action="'/accounts/' + ${accountNumber} + '/update'" method="get">
-    <input type="submit" value="Редактировать">
+    <input id="update" type="submit" value="Редактировать">
 </form>
 <form action="/accounts/delete" method="post">
     <input type="hidden" name="id" th:value="${accountNumber}">
-    <input type="submit" value="Удалить">
+    <input id="delete" type="submit" value="Удалить">
 </form>
 </body>
 </html>

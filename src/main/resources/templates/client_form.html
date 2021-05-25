@@ -34,7 +34,7 @@
             <td th:if="${#fields.hasErrors('clientType')}" th:errors="*{clientType}">Client Type Error</td>
         </tr>
         <td><button th:if="${operation == 'add'}" id="add" type="submit">Добавить</button></td>
-        <td><button th:if="${operation == 'update'}" id = "update" type="submit">Редактировать</button></td>
+        <td><button th:if="${operation == 'update'}" id="update" type="submit">Редактировать</button></td>
         </tr>
     </table>
 </form>

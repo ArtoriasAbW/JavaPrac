@@ -15,6 +15,7 @@ public class Account {
     @Id
     @Column(name = "account_number", length = 12)
     @NotBlank
+    @NotNull
     private String accountNumber;
 
     @Column(name = "account_status")
@@ -41,6 +42,7 @@ public class Account {
     @Column(name = "opening_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
+    @NotNull
     private Date openingDate;
 
 

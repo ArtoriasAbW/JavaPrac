@@ -30,6 +30,7 @@ public class DepartmentPageTest {
         long start_size = driver.findElements(By.cssSelector("p")).size();
         driver.findElement(By.id("add")).click();
         driver.findElement(By.id("name")).sendKeys("Тестовое");
+        driver.findElement(By.id("add")).click(); // некорректные данные
         driver.findElement(By.id("address")).sendKeys("г.Москва ул.Победы д.9");
         driver.findElement(By.id("phone")).sendKeys("+7 900 312 32 12");
         driver.findElement(By.id("add")).click();
@@ -43,6 +44,21 @@ public class DepartmentPageTest {
 
     @Test
     public void updateDepartment() {
-//        driver.findElement(By.id("phone")).clear();
+        driver.get("http://localhost:8080/");
+        driver.findElement(By.linkText("Отделения")).click();
+        driver.findElement(By.id("add")).click();
+        driver.findElement(By.id("name")).sendKeys("Тестовое");
+        driver.findElement(By.id("add")).click(); // некорректные данные
+        driver.findElement(By.id("address")).sendKeys("г.Москва ул.Победы д.9");
+        driver.findElement(By.id("phone")).sendKeys("+7 900 312 32 12");
+        driver.findElement(By.id("add")).click();
+        driver.findElement(By.linkText("Тестовое")).click();
+        Assert.assertEquals(driver.findElement(By.id("phone")).getText(), "Телефон отделения: +7 900 312 32 12");
+        driver.findElement(By.id("update")).click();
+        driver.findElement(By.id("phone")).clear();
+        driver.findElement(By.id("phone")).sendKeys("+7 111 111 11 11");
+        driver.findElement(By.id("update")).click();
+        Assert.assertEquals(driver.findElement(By.id("phone")).getText(), "Телефон отделения: +7 111 111 11 11");
+        driver.findElement(By.id("delete")).click();
     }
 }

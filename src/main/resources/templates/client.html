@@ -6,19 +6,19 @@
 </head>
 <body>
 <a href="/clients" class="btn">Список клиентов</a>
-<p th:text="'Имя клиента: ' + ${clientName}"></p>
-<p th:text="'Адрес клиента: ' + ${clientAddress}"></p>
-<p th:text="'Email клиента: ' + ${clientEmail}"></p>
-<p th:text="'Телефон клиента: ' + ${clientPhoneNumber}"></p>
-<p th:text="'Тип клиента: ' + ${clientType}"></p>
-<p th:text="'Дата регистрации клиента: ' + ${clientRegistrationDate}"></p>
+<p id="name" th:text="'Имя клиента: ' + ${clientName}"></p>
+<p id="address" th:text="'Адрес клиента: ' + ${clientAddress}"></p>
+<p id="email" th:text="'Email клиента: ' + ${clientEmail}"></p>
+<p id="phone" th:text="'Телефон клиента: ' + ${clientPhoneNumber}"></p>
+<p id="type" th:text="'Тип клиента: ' + ${clientType}"></p>
+<p id="date" th:text="'Дата регистрации клиента: ' + ${clientRegistrationDate}"></p>
 <a th:href="'http://localhost:8080/accounts?clientid=' + ${clientId}" th:text="Счета"></a>
 <form th:action="'/clients/' + ${clientId} + '/update'" method="get">
-    <input type="submit" value="Редактировать">
+    <input id="update" type="submit" value="Редактировать">
 </form>
 <form action="/clients/delete" method="post">
     <input type="hidden" name="id" th:value="${clientId}">
-    <input type="submit" value="Удалить">
+    <input id="delete" type="submit" value="Удалить">
 </form>
 </body>
 </html>

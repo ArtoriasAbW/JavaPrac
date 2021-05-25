@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td>Владелец:</td>
-            <td><select th:field="*{client.clientId}">
+            <td><select id="client" th:field="*{client.clientId}">
                 <option th:each="client : ${allclients}"
                         th:value="${client.getClientId()}"
                         th:text="${client.getClientName()}"></option>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td>Отделение:</td>
-            <td><select th:field="*{department.departmentId}">
+            <td><select id="department" th:field="*{department.departmentId}">
                 <option th:each="department : ${alldepartments}"
                         th:value="${department.getDepartmentId()}"
                         th:text="${department.getDepartmentName()}"></option>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td>Тип:</td>
-            <td><select th:field="*{type.typeId}">
+            <td><select id="type" th:field="*{type.typeId}">
                 <option th:each="type : ${alltypes}"
                         th:value="${type.getTypeId()}"
                         th:text="${type.getTypeName()}"></option>
